@@ -93,14 +93,14 @@ def different_def(node1, node2):
 
 # decide whether it is reasonable to consider two nodes to be
 # moves of each other
-def can_move(node1, node2, c):
+def can_move(node1, node2, cost):
     return (same_def(node1, node2) or
-            c <= (node_size(node1) + node_size(node2)) * MOVE_RATIO)
+            cost <= (node_size(node1) + node_size(node2)) * MOVE_RATIO)
 
 
 # whether the node is considered deleted or inserted because
 # the other party matches a substructure of it.
-def nodeFramed(node, changes):
+def node_framed(node, changes):
     for c in changes:
         if (c.is_frame and (node == c.orig or node == c.cur)):
             return True
